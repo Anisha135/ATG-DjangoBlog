@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if error %}
+<br>
+{{ error }}
+
+<br/>
+{% endif %}
+
+<h1>Signup</h1>
+
+<form method = "POST" id="formm">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" required>
+    </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <div id="emailHelp" class="form-text">Must contain at least one number,one uppercase and lowercase letter, and at least 8 or more characters</div>
+        <input type="password" class="form-control" id="exampleInputPassword1" onkeyup="check();"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" name="password1" required>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password2" required>
+      </div>
+
+      <div style="color: red">
+        {{ form.captcha.errors }}
+    </div>
+
+    {{ form.captcha }}
+
+    <a href="/">Refresh</a>
+    <br>
+    <br>
+
+      <button type="submit" class="btn btn-primary">Register</button>
+</form>
+<br>
+<p class="text-center">Already have an account? <a href="/login">Login here</a>.</p>
+
+</body>
+
+
+{% endblock %}

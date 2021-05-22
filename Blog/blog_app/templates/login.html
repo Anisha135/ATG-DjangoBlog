@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if error %}
+<br>
+    {{ error }}
+
+<br/>
+{% endif %}
+
+<h1>Login</h1>
+
+<form method = "POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputUsername" class="form-label">Username</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+
+
+</form>
+<br>
+<p class="text-center">Don't have an account? <a href="/">Create an account</a>.</p>
+
+
+{% endblock %}
